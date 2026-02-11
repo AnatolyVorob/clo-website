@@ -1,3 +1,29 @@
+/* Cursor glow effect */
+body {
+    --cursor-x: 50%;
+    --cursor-y: 50%;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent 70%);
+    pointer-events: none;
+    z-index: 9998;
+    left: var(--cursor-x);
+    top: var(--cursor-y);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+body.cursor-active::before {
+    opacity: 1;
+}
+
 * {
     margin: 0;
     padding: 0;

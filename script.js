@@ -1,3 +1,22 @@
+// Cursor glow effect
+let cursorGlow = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('cursor-active');
+    
+    document.addEventListener('mousemove', (e) => {
+        if (!cursorGlow) {
+            cursorGlow = document.body;
+        }
+        cursorGlow.style.setProperty('--cursor-x', e.clientX + 'px');
+        cursorGlow.style.setProperty('--cursor-y', e.clientY + 'px');
+        
+        const beforeElement = window.getComputedStyle(document.body, '::before');
+        document.body.style.setProperty('--cursor-x', e.clientX + 'px');
+        document.body.style.setProperty('--cursor-y', e.clientY + 'px');
+    });
+});
+
 // Split text animation
 const splitText = (element) => {
     const text = element.textContent;
