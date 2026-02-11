@@ -1,0 +1,65 @@
+/* Mobile optimizations - reduce heavy effects */
+@media (max-width: 768px) {
+    /* Simplify gradient mesh for mobile performance */
+    body {
+        background: 
+            radial-gradient(circle 600px at 20% 10%, rgba(168, 85, 247, 0.5) 0%, transparent 60%),
+            radial-gradient(circle 600px at 80% 50%, rgba(99, 102, 241, 0.5) 0%, transparent 60%),
+            radial-gradient(circle 600px at 50% 90%, rgba(236, 72, 153, 0.5) 0%, transparent 60%),
+            #020208;
+        background-attachment: scroll; /* Fixed attachment is expensive on mobile */
+    }
+    
+    /* Reduce blur for better performance */
+    .about-card,
+    .capability {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Disable floating elements on mobile */
+    .floating-elements {
+        display: none !important;
+    }
+    
+    /* Simplify animations */
+    .about-card,
+    .capability {
+        transition: all 0.2s ease;
+    }
+    
+    /* Reduce transform complexity on hover */
+    .about-card:hover {
+        transform: translateY(-8px) scale(1.02);
+    }
+    
+    /* Optimize typography */
+    h1 {
+        font-size: 3rem !important;
+    }
+    
+    h2 {
+        font-size: 3rem !important;
+    }
+    
+    /* Better spacing for mobile */
+    .about,
+    .capabilities,
+    .philosophy,
+    .tech {
+        padding: 5rem 0 !important;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .floating-elements {
+        display: none !important;
+    }
+}
