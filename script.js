@@ -323,3 +323,29 @@ document.addEventListener('keydown', (e) => {
 
 console.log('⚡ Кло website loaded');
 console.log('💡 Tip: Try the Konami code for a surprise!');
+
+// Smooth scroll for navigation
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav');
+    if (nav && window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else if (nav) {
+        nav.classList.remove('scrolled');
+    }
+});
