@@ -1,36 +1,58 @@
 /* Mobile optimizations - reduce heavy effects */
 @media (max-width: 768px) {
-    /* Simplify gradient mesh for mobile performance */
+    /* Drastically simplify gradient mesh for mobile performance */
     body {
         background: 
-            radial-gradient(circle 600px at 20% 10%, rgba(168, 85, 247, 0.5) 0%, transparent 60%),
-            radial-gradient(circle 600px at 80% 50%, rgba(99, 102, 241, 0.5) 0%, transparent 60%),
-            radial-gradient(circle 600px at 50% 90%, rgba(236, 72, 153, 0.5) 0%, transparent 60%),
+            radial-gradient(circle 500px at 50% 0%, rgba(168, 85, 247, 0.4) 0%, transparent 70%),
+            radial-gradient(circle 500px at 0% 100%, rgba(99, 102, 241, 0.3) 0%, transparent 70%),
             #020208;
         background-attachment: scroll; /* Fixed attachment is expensive on mobile */
     }
     
-    /* Reduce blur for better performance */
+    /* Remove backdrop-filter completely on mobile - it's the main performance killer */
     .about-card,
     .capability {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(26, 26, 46, 0.8) !important;
     }
     
-    /* Disable floating elements on mobile */
+    /* Disable all floating elements on mobile */
     .floating-elements {
         display: none !important;
     }
     
-    /* Simplify animations */
+    /* Disable particles on mobile */
+    #particles-canvas {
+        display: none !important;
+    }
+    
+    /* Simplify hero animations */
+    .hero::before,
+    .hero::after {
+        display: none !important;
+    }
+    
+    .blob {
+        display: none !important;
+    }
+    
+    /* Simplify all animations */
     .about-card,
     .capability {
-        transition: all 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     
     /* Reduce transform complexity on hover */
-    .about-card:hover {
-        transform: translateY(-8px) scale(1.02);
+    .about-card:hover,
+    .capability:hover {
+        transform: translateY(-4px);
+    }
+    
+    /* Disable SVG animations on mobile */
+    svg animate,
+    svg animateTransform {
+        animation-play-state: paused !important;
     }
     
     /* Optimize typography */
@@ -48,6 +70,14 @@
     .philosophy,
     .tech {
         padding: 5rem 0 !important;
+    }
+    
+    /* Force GPU acceleration for smoother scrolling */
+    .hero,
+    .about-card,
+    .capability {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
     }
 }
 
