@@ -58,6 +58,7 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('revealed');
         }
     });
 }, observerOptions);
@@ -73,13 +74,26 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // Animate cards on scroll
+    // Animate cards on scroll with stagger
     const cards = document.querySelectorAll('.about-card, .capability, .principle, .tech-item');
     cards.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
+    });
+    
+    // Add reveal class for additional effects
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    document.querySelectorAll('h2, h3').forEach(el => {
+        revealObserver.observe(el);
     });
 });
 
