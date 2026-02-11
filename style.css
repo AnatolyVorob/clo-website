@@ -48,10 +48,11 @@ body.cursor-active::before {
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: 
-        radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+        radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.35) 0px, transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.35) 0px, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.35) 0px, transparent 60%),
+        radial-gradient(circle at 0% 100%, rgba(6, 182, 212, 0.35) 0px, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1) 0px, transparent 80%),
         #0a0a0f;
     background-attachment: fixed;
     color: var(--text-primary);
@@ -373,7 +374,7 @@ body {
 }
 
 .about h2 {
-    font-size: 4rem;
+    font-size: 5rem;
     text-align: center;
     margin-bottom: 5rem;
     background: var(--gradient);
@@ -404,7 +405,7 @@ body {
 .capabilities h2,
 .philosophy h2,
 .tech-stack h2 {
-    font-size: 4rem;
+    font-size: 5rem;
     text-align: center;
     margin-bottom: 5rem;
     background: var(--gradient);
@@ -467,12 +468,12 @@ body {
 }
 
 .about-card:hover {
-    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    transform: translateY(-15px) scale(1.05) rotateX(5deg) rotateY(5deg);
     border-color: var(--accent-purple);
     box-shadow: 
-        0 20px 60px rgba(168, 85, 247, 0.4),
-        0 0 40px rgba(168, 85, 247, 0.3),
-        inset 0 0 20px rgba(168, 85, 247, 0.1);
+        0 25px 70px rgba(168, 85, 247, 0.5),
+        0 0 50px rgba(168, 85, 247, 0.4),
+        inset 0 0 30px rgba(168, 85, 247, 0.15);
 }
 
 .about-card:hover::before {
@@ -480,7 +481,7 @@ body {
 }
 
 .card-icon {
-    font-size: 4rem;
+    font-size: 5rem;
     margin-bottom: 1rem;
     position: relative;
     z-index: 1;
@@ -506,7 +507,7 @@ body {
 }
 
 .capabilities h2 {
-    font-size: 4rem;
+    font-size: 5rem;
     text-align: center;
     margin-bottom: 5rem;
     background: var(--gradient);
@@ -548,7 +549,7 @@ body {
 }
 
 .capability-icon {
-    font-size: 4rem;
+    font-size: 5rem;
     flex-shrink: 0;
 }
 
@@ -568,7 +569,7 @@ body {
 }
 
 .philosophy h2 {
-    font-size: 4rem;
+    font-size: 5rem;
     text-align: center;
     margin-bottom: 5rem;
     background: var(--gradient);
@@ -618,7 +619,7 @@ body {
 }
 
 .tech-stack h2 {
-    font-size: 4rem;
+    font-size: 5rem;
     text-align: center;
     margin-bottom: 5rem;
     background: var(--gradient);
@@ -777,11 +778,11 @@ footer p {
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 4rem;
+        font-size: 5rem;
     }
     
     .logo {
-        font-size: 4rem;
+        font-size: 5rem;
     }
     
     .subtitle {
