@@ -80,6 +80,76 @@ body {
                 radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
     animation: floatingGlow 15s ease-in-out infinite;
+    filter: blur(60px);
+}
+
+/* Morphing blobs */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(168, 85, 247, 0.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    animation: gridMove 20s linear infinite;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.3;
+    animation: blobMove 20s ease-in-out infinite;
+}
+
+.blob-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent-purple);
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--accent-indigo);
+    top: 60%;
+    right: 10%;
+    animation-delay: -7s;
+}
+
+.blob-3 {
+    width: 250px;
+    height: 250px;
+    background: var(--accent-pink);
+    bottom: 20%;
+    left: 50%;
+    animation-delay: -14s;
+}
+
+@keyframes blobMove {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        border-radius: 50%;
+    }
+    25% {
+        transform: translate(50px, -50px) scale(1.2);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    50% {
+        transform: translate(-30px, 30px) scale(0.9);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    75% {
+        transform: translate(30px, 50px) scale(1.1);
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
 }
 
 @keyframes floatingGlow {

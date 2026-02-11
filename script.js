@@ -133,6 +133,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Scroll velocity indicator
+let lastScrollY = window.scrollY;
+let scrollVelocity = 0;
+let velocityIndicator = null;
+
+const createVelocityIndicator = () => {
+    velocityIndicator = document.createElement('div');
+    velocityIndicator.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid rgba(168, 85, 247, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--accent-purple);
+        background: rgba(26, 26, 46, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    `;
+    velocityIndicator.innerHTML = '<span>0</span><br><small style="font-size: 10px;">px/s</small>';
+    document.body.appendChild(velocityIndicator);
+};
+
+const updateVelocity = () => {
+    const currentScrollY = window.scrollY;
+    scrollVelocity = Math.abs(currentScrollY - lastScrollY) * 10;
+    lastScrollY = currentScrollY;
+    
+    if (velocityIndicator) {
+        const speed = Math.round(scrollVelocity);
+        velocityIndicator.querySelector('span').textContent = speed;
+        
+        if (scrollVelocity > 10) {
+            velocityIndicator.style.opacity = '1';
+            velocityIndicator.style.borderColor = `rgba(168, 85, 247, ${Math.min(scrollVelocity / 500, 1)})`;
+            velocityIndicator.style.boxShadow = `0 0 ${Math.min(scrollVelocity / 10, 30)}px rgba(168, 85, 247, 0.6)`;
+        } else {
+            velocityIndicator.style.opacity = '0';
+        }
+    }
+    
+    scrollVelocity *= 0.9;
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    createVelocityIndicator();
+    setInterval(updateVelocity, 100);
+});
+
 // Parallax effect for hero section
 let lastScrollY = window.scrollY;
 
