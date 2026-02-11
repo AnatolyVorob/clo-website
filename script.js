@@ -1,3 +1,39 @@
+// Split text animation
+const splitText = (element) => {
+    const text = element.textContent;
+    element.innerHTML = '';
+    
+    text.split('').forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.display = 'inline-block';
+        span.style.opacity = '0';
+        span.style.transform = 'translateY(20px) rotateX(-90deg)';
+        span.style.animation = `charReveal 0.6s ease forwards ${index * 0.05}s`;
+        element.appendChild(span);
+    });
+};
+
+// Add split text animation CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes charReveal {
+        to {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Apply to hero title
+document.addEventListener('DOMContentLoaded', () => {
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle) {
+        setTimeout(() => splitText(heroTitle), 500);
+    }
+});
+
 // Scroll Progress Bar
 const updateScrollProgress = () => {
     const scrollProgress = document.querySelector('.scroll-progress');

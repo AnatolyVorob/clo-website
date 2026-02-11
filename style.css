@@ -222,6 +222,60 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.about h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    transition: width 0.8s ease;
+}
+
+.about h2.in-view::after {
+    width: 100px;
+}
+
+.capabilities h2,
+.philosophy h2,
+.tech-stack h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.capabilities h2::after,
+.philosophy h2::after,
+.tech-stack h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    transition: width 0.8s ease;
+}
+
+.capabilities h2.in-view::after,
+.philosophy h2.in-view::after,
+.tech-stack h2.in-view::after {
+    width: 100px;
 }
 
 .about-grid {
