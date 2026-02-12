@@ -402,3 +402,20 @@ if (pauseBtn && playBtn && restartBtn && flowContainer) {
         });
     });
 }
+
+// Interactive Timeline - Click to expand
+document.querySelectorAll('.timeline-content').forEach(content => {
+    content.addEventListener('click', function() {
+        const item = this.closest('.timeline-item');
+        item.classList.toggle('expanded');
+    });
+});
+
+// Timeline dots - Click to expand
+document.querySelectorAll('.timeline-dot').forEach(dot => {
+    dot.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const item = this.closest('.timeline-item');
+        item.classList.toggle('expanded');
+    });
+});
