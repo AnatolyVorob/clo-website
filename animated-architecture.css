@@ -99,13 +99,13 @@
     top: 50%;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        var(--accent-purple) 50%, 
+        rgba(168, 85, 247, 0.3) 50%, 
         transparent 100%);
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -114,13 +114,14 @@
     position: absolute;
     top: 50%;
     left: 0;
-    width: 20px;
-    height: 20px;
-    background: var(--accent-purple);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, var(--accent-purple) 0%, rgba(168, 85, 247, 0.6) 100%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 20px var(--accent-purple);
-    animation: flow 3s linear infinite;
+    box-shadow: 0 0 15px var(--accent-purple);
+    animation: flow 4s linear infinite;
+    z-index: 0;
 }
 
 @keyframes flow {
@@ -140,12 +141,12 @@
     }
 }
 
-/* Stagger animation delays for each node */
+/* Stagger animation delays for each node - sync with particle arrival */
 .flow-node:nth-child(1) .flow-icon { animation-delay: 0s; }
-.flow-node:nth-child(2) .flow-icon { animation-delay: 0.6s; }
-.flow-node:nth-child(3) .flow-icon { animation-delay: 1.2s; }
-.flow-node:nth-child(4) .flow-icon { animation-delay: 1.8s; }
-.flow-node:nth-child(5) .flow-icon { animation-delay: 2.4s; }
+.flow-node:nth-child(2) .flow-icon { animation-delay: 0.8s; }
+.flow-node:nth-child(3) .flow-icon { animation-delay: 1.6s; }
+.flow-node:nth-child(4) .flow-icon { animation-delay: 2.4s; }
+.flow-node:nth-child(5) .flow-icon { animation-delay: 3.2s; }
 
 /* Control buttons */
 .flow-controls {
