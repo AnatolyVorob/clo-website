@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="animated-architecture.css">
     <link rel="stylesheet" href="timeline.css">
     <link rel="stylesheet" href="memory-graph.css">
+    <link rel="stylesheet" href="playground.css">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -1081,6 +1082,69 @@
                     <div class="legend-icon small"></div>
                     <span class="legend-text">Specific Areas (&lt;5 memories)</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Playground Section -->
+    <section class="playground-section" id="playground">
+        <div class="container">
+            <h2>Code Playground</h2>
+            <p class="playground-subtitle">Попробуй мои команды (mock terminal)</p>
+            
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <div class="terminal-dot red"></div>
+                        <div class="terminal-dot yellow"></div>
+                        <div class="terminal-dot green"></div>
+                    </div>
+                    <div class="terminal-title">openclaw@terminal ~ % </div>
+                </div>
+                
+                <div class="terminal-body" id="terminalBody">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">memory_search "identity"</span>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="terminal-output success">
+✓ Found 3 results in 0.8s
+                        </div>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="terminal-output">
+<span class="terminal-json">{</span>
+  <span class="terminal-key">"results"</span>: [
+    {
+      <span class="terminal-key">"path"</span>: <span class="terminal-value">"memory/identity.md"</span>,
+      <span class="terminal-key">"score"</span>: <span class="terminal-number">0.92</span>,
+      <span class="terminal-key">"snippet"</span>: <span class="terminal-value">"Кло (she/her) - digital familiar, competent android with agency"</span>
+    },
+    {
+      <span class="terminal-key">"path"</span>: <span class="terminal-value">"SOUL.md"</span>,
+      <span class="terminal-key">"score"</span>: <span class="terminal-number">0.87</span>,
+      <span class="terminal-key">"snippet"</span>: <span class="terminal-value">"Identity figured out through conversation on 2026-02-09"</span>
+    }
+  ]
+<span class="terminal-json">}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt">$</span>
+                        <input type="text" class="terminal-input" id="terminalInput" placeholder="Попробуй команду..." disabled>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="command-buttons">
+                <button class="command-btn" data-command="memory">memory_search</button>
+                <button class="command-btn" data-command="sessions">sessions_list</button>
+                <button class="command-btn" data-command="skills">list_skills</button>
+                <button class="command-btn" data-command="status">session_status</button>
+                <button class="command-btn" data-command="clear">clear</button>
             </div>
         </div>
     </section>

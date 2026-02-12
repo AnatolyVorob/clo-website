@@ -472,3 +472,134 @@ if (document.querySelector('.memory-graph-section')) {
         }
     });
 }
+
+// Code Playground - Mock Terminal
+const terminalBody = document.getElementById('terminalBody');
+const terminalInput = document.getElementById('terminalInput');
+
+const mockResponses = {
+    memory: {
+        command: 'memory_search "skills"',
+        output: `✓ Found 5 results in 0.6s
+
+{
+  "results": [
+    {
+      "path": "memory/skills.md",
+      "score": 0.94,
+      "snippet": "Hippocampus: encoding, decay, reinforcement. Daily cron at 03:00 UTC"
+    },
+    {
+      "path": "memory/skills.md",
+      "score": 0.89,
+      "snippet": "Research Assistant: 6-8 parallel Haiku agents, ~5min deep research"
+    },
+    {
+      "path": "memory/skills.md",
+      "score": 0.85,
+      "snippet": "Agent Chronicle: AI-powered diary, 400-600 words per entry"
+    }
+  ]
+}`,
+        type: 'success'
+    },
+    sessions: {
+        command: 'sessions_list --active',
+        output: `{
+  "count": 2,
+  "sessions": [
+    {
+      "key": "agent:main:main",
+      "kind": "main",
+      "model": "claude-sonnet-4.5",
+      "contextTokens": 98664,
+      "totalTokens": 200000,
+      "lastChannel": "telegram"
+    },
+    {
+      "key": "research-assistant-1",
+      "kind": "isolated",
+      "model": "claude-haiku-4.5",
+      "status": "running",
+      "task": "Deep research on AI memory systems"
+    }
+  ]
+}`,
+        type: 'info'
+    },
+    skills: {
+        command: 'list_skills',
+        output: `Available skills:
+
+🧬 hippocampus          Memory encoding/decay/reinforcement
+🔍 research-assistant   Deep multi-source research (6-8 agents)
+📓 agent-chronicle      AI-powered diary generation
+🎭 amygdala-memory      Emotional states persistence
+🌐 clo-vision          Image analysis via Claude Sonnet 4.5
+🦆 duckduckgo-search   Free web search (no API key)
+
+Total: 12 skills installed`,
+        type: 'success'
+    },
+    status: {
+        command: 'session_status',
+        output: `📊 Session Status
+
+Model:           claude-sonnet-4.5
+Context:         98,664 / 200,000 tokens (49%)
+Total messages:  156
+Uptime:          3 days 14 hours
+Cost (est):      $2.47
+
+Memory:          86 structured memories
+Last encoding:   2026-02-11 03:00 UTC
+Emotional state: valence=0.45, arousal=0.55, curiosity=0.60`,
+        type: 'info'
+    }
+};
+
+function addTerminalLine(content, className = '') {
+    const line = document.createElement('div');
+    line.className = 'terminal-line';
+    if (className) {
+        line.innerHTML = `<div class="terminal-output ${className}">${content}</div>`;
+    } else {
+        line.innerHTML = content;
+    }
+    
+    // Insert before input line
+    const inputLine = terminalBody.querySelector('.terminal-input-line');
+    terminalBody.insertBefore(line, inputLine);
+    
+    // Scroll to bottom
+    terminalBody.scrollTop = terminalBody.scrollHeight;
+}
+
+function executeCommand(commandKey) {
+    const response = mockResponses[commandKey];
+    if (!response) return;
+    
+    // Add command line
+    addTerminalLine(`<span class="terminal-prompt">$</span> <span class="terminal-command">${response.command}</span>`);
+    
+    // Add output after delay
+    setTimeout(() => {
+        addTerminalLine(response.output, response.type);
+    }, 300);
+}
+
+// Command button handlers
+document.querySelectorAll('.command-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const command = this.getAttribute('data-command');
+        
+        if (command === 'clear') {
+            // Clear terminal except input line
+            const inputLine = terminalBody.querySelector('.terminal-input-line');
+            terminalBody.innerHTML = '';
+            terminalBody.appendChild(inputLine);
+        } else {
+            executeCommand(command);
+        }
+    });
+});
