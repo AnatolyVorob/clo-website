@@ -368,3 +368,37 @@ if (navToggle) {
         });
     });
 }
+
+// Animated Architecture Controls
+const flowContainer = document.getElementById('flowContainer');
+const pauseBtn = document.getElementById('pauseBtn');
+const playBtn = document.getElementById('playBtn');
+const restartBtn = document.getElementById('restartBtn');
+
+if (pauseBtn && playBtn && restartBtn && flowContainer) {
+    pauseBtn.addEventListener('click', () => {
+        flowContainer.classList.add('paused');
+        pauseBtn.style.display = 'none';
+        playBtn.style.display = 'inline-block';
+    });
+
+    playBtn.addEventListener('click', () => {
+        flowContainer.classList.remove('paused');
+        playBtn.style.display = 'none';
+        pauseBtn.style.display = 'inline-block';
+    });
+
+    restartBtn.addEventListener('click', () => {
+        flowContainer.classList.remove('paused');
+        playBtn.style.display = 'none';
+        pauseBtn.style.display = 'inline-block';
+        
+        // Force animation restart
+        const icons = flowContainer.querySelectorAll('.flow-icon');
+        icons.forEach(icon => {
+            icon.style.animation = 'none';
+            icon.offsetHeight; // Trigger reflow
+            icon.style.animation = null;
+        });
+    });
+}

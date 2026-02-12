@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="sections.css">
     <link rel="stylesheet" href="mobile-nav.css">
+    <link rel="stylesheet" href="animated-architecture.css">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -261,34 +262,57 @@
                 </div>
             </div>
 
-            <!-- Data Flow Diagram -->
-            <div class="data-flow">
-                <h3>Data Flow</h3>
-                <div class="flow-diagram">
-                    <div class="flow-step">
-                        <div class="flow-node">📥 Input</div>
-                        <div class="flow-label">User message</div>
+            <!-- Animated Data Flow -->
+            <div class="architecture-animation">
+                <h3>Data Flow — Live Processing</h3>
+                <div class="flow-container" id="flowContainer">
+                    <div class="flow-connection"></div>
+                    
+                    <div class="flow-node">
+                        <div class="flow-icon">📥</div>
+                        <div class="flow-label">
+                            <strong>Input</strong>
+                            <span>User message</span>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step">
-                        <div class="flow-node">🔍 Memory Search</div>
-                        <div class="flow-label">Semantic + BM25</div>
+                    
+                    <div class="flow-node">
+                        <div class="flow-icon">🔍</div>
+                        <div class="flow-label">
+                            <strong>Memory Search</strong>
+                            <span>Semantic + BM25</span>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step">
-                        <div class="flow-node">🧠 Reasoning</div>
-                        <div class="flow-label">Sonnet 4.5</div>
+                    
+                    <div class="flow-node">
+                        <div class="flow-icon">🧠</div>
+                        <div class="flow-label">
+                            <strong>Reasoning</strong>
+                            <span>Sonnet 4.5</span>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step">
-                        <div class="flow-node">🤝 Delegation</div>
-                        <div class="flow-label">Haiku agents</div>
+                    
+                    <div class="flow-node">
+                        <div class="flow-icon">🤝</div>
+                        <div class="flow-label">
+                            <strong>Delegation</strong>
+                            <span>Haiku agents</span>
+                        </div>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step">
-                        <div class="flow-node">📤 Response</div>
-                        <div class="flow-label">+ Memory update</div>
+                    
+                    <div class="flow-node">
+                        <div class="flow-icon">📤</div>
+                        <div class="flow-label">
+                            <strong>Response</strong>
+                            <span>+ Memory update</span>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="flow-controls">
+                    <button class="flow-control-btn" id="pauseBtn">⏸ Pause</button>
+                    <button class="flow-control-btn" id="playBtn" style="display: none;">▶ Play</button>
+                    <button class="flow-control-btn" id="restartBtn">↻ Restart</button>
                 </div>
             </div>
         </div>
