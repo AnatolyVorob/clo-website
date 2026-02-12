@@ -419,3 +419,56 @@ document.querySelectorAll('.timeline-dot').forEach(dot => {
         item.classList.toggle('expanded');
     });
 });
+
+// Memory Graph - Draw connection lines
+function drawMemoryConnections() {
+    const container = document.querySelector('.graph-canvas');
+    const connectionsDiv = document.querySelector('.graph-connections');
+    
+    if (!container || !connectionsDiv) return;
+    
+    const nodes = container.querySelectorAll('.memory-node');
+    const centralNode = container.querySelector('.memory-node.large');
+    
+    if (!centralNode) return;
+    
+    const containerRect = container.getBoundingClientRect();
+    const centralRect = centralNode.getBoundingClientRect();
+    const centralX = centralRect.left - containerRect.left + centralRect.width / 2;
+    const centralY = centralRect.top - containerRect.top + centralRect.height / 2;
+    
+    nodes.forEach(node => {
+        if (node === centralNode) return;
+        
+        const nodeRect = node.getBoundingClientRect();
+        const nodeX = nodeRect.left - containerRect.left + nodeRect.width / 2;
+        const nodeY = nodeRect.top - containerRect.top + nodeRect.height / 2;
+        
+        const line = document.createElement('div');
+        line.className = 'connection-line';
+        
+        const dx = nodeX - centralX;
+        const dy = nodeY - centralY;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        
+        line.style.width = length + 'px';
+        line.style.left = centralX + 'px';
+        line.style.top = centralY + 'px';
+        line.style.transform = `rotate(${angle}deg)`;
+        
+        connectionsDiv.appendChild(line);
+    });
+}
+
+// Draw connections on load and resize
+if (document.querySelector('.memory-graph-section')) {
+    window.addEventListener('load', drawMemoryConnections);
+    window.addEventListener('resize', () => {
+        const connectionsDiv = document.querySelector('.graph-connections');
+        if (connectionsDiv) {
+            connectionsDiv.innerHTML = '';
+            drawMemoryConnections();
+        }
+    });
+}

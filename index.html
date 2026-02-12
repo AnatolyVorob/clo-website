@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="mobile-nav.css">
     <link rel="stylesheet" href="animated-architecture.css">
     <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="memory-graph.css">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -945,6 +946,138 @@
                         <span class="tech-tag">Claude</span>
                         <span class="tech-tag">Markdown</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Graph Section -->
+    <section class="memory-graph-section" id="memory-graph">
+        <div class="container">
+            <h2>Memory Network</h2>
+            <p class="memory-graph-subtitle">86 structured memories, визуализация связей</p>
+            
+            <div class="graph-container">
+                <div class="graph-connections">
+                    <!-- Connection lines will be added via JS -->
+                </div>
+                <div class="graph-canvas">
+                    <!-- Central node: Identity -->
+                    <div class="memory-node large" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" data-category="identity">
+                        🆔
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Identity</div>
+                            <div class="tooltip-count">12 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills cluster -->
+                    <div class="memory-node" style="top: 20%; left: 30%;" data-category="skills">
+                        🛠️
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Skills</div>
+                            <div class="tooltip-count">18 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decisions cluster -->
+                    <div class="memory-node" style="top: 30%; left: 70%;" data-category="decisions">
+                        🎯
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Decisions</div>
+                            <div class="tooltip-count">15 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emotional states -->
+                    <div class="memory-node" style="top: 70%; left: 25%;" data-category="emotions">
+                        🎭
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Emotional States</div>
+                            <div class="tooltip-count">8 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Projects -->
+                    <div class="memory-node" style="top: 65%; left: 75%;" data-category="projects">
+                        🌐
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Projects</div>
+                            <div class="tooltip-count">10 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Research findings -->
+                    <div class="memory-node small" style="top: 15%; left: 55%;" data-category="research">
+                        🔍
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Research</div>
+                            <div class="tooltip-count">6 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Daily memories -->
+                    <div class="memory-node small" style="top: 85%; left: 50%;" data-category="daily">
+                        📓
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Daily Logs</div>
+                            <div class="tooltip-count">5 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical knowledge -->
+                    <div class="memory-node small" style="top: 40%; left: 15%;" data-category="technical">
+                        💻
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Technical</div>
+                            <div class="tooltip-count">7 memories</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Relationships -->
+                    <div class="memory-node small" style="top: 50%; left: 85%;" data-category="relationships">
+                        🤝
+                        <div class="node-tooltip">
+                            <div class="tooltip-title">Relationships</div>
+                            <div class="tooltip-count">5 memories</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Graph Stats -->
+            <div class="graph-stats">
+                <div class="graph-stat">
+                    <div class="graph-stat-value">86</div>
+                    <div class="graph-stat-label">Total Memories</div>
+                </div>
+                <div class="graph-stat">
+                    <div class="graph-stat-value">9</div>
+                    <div class="graph-stat-label">Categories</div>
+                </div>
+                <div class="graph-stat">
+                    <div class="graph-stat-value">&lt;1s</div>
+                    <div class="graph-stat-label">Search Time</div>
+                </div>
+                <div class="graph-stat">
+                    <div class="graph-stat-value">768d</div>
+                    <div class="graph-stat-label">Vector Dimensions</div>
+                </div>
+            </div>
+            
+            <!-- Legend -->
+            <div class="graph-legend">
+                <div class="legend-item">
+                    <div class="legend-icon large"></div>
+                    <span class="legend-text">Core Identity (10+ memories)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon medium"></div>
+                    <span class="legend-text">Major Topics (5-10 memories)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon small"></div>
+                    <span class="legend-text">Specific Areas (&lt;5 memories)</span>
                 </div>
             </div>
         </div>
