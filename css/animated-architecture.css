@@ -1,0 +1,209 @@
+/* Animated Architecture Diagram */
+.architecture-animation {
+    margin: 4rem 0;
+    padding: 3rem;
+    background: rgba(26, 26, 46, 0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.architecture-animation h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.flow-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.flow-node {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.flow-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(168, 85, 247, 0.2);
+    border: 2px solid var(--accent-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.flow-icon::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: var(--gradient);
+    opacity: 0;
+    animation: ripple 2s ease-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
+.flow-label {
+    text-align: center;
+}
+
+.flow-label strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.flow-label span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Animated connection lines */
+.flow-connection {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(168, 85, 247, 0.3) 50%, 
+        transparent 100%);
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.flow-connection::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, var(--accent-purple) 0%, rgba(168, 85, 247, 0.6) 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px var(--accent-purple);
+    animation: flow 4s linear infinite;
+    z-index: 0;
+}
+
+@keyframes flow {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* Stagger animation delays for each node - sync with particle arrival */
+.flow-node:nth-child(1) .flow-icon { animation-delay: 0s; }
+.flow-node:nth-child(2) .flow-icon { animation-delay: 0.8s; }
+.flow-node:nth-child(3) .flow-icon { animation-delay: 1.6s; }
+.flow-node:nth-child(4) .flow-icon { animation-delay: 2.4s; }
+.flow-node:nth-child(5) .flow-icon { animation-delay: 3.2s; }
+
+/* Control buttons */
+.flow-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.flow-control-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid var(--accent-purple);
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.flow-control-btn:hover {
+    background: rgba(168, 85, 247, 0.3);
+    transform: translateY(-2px);
+}
+
+.flow-container.paused .flow-icon,
+.flow-container.paused .flow-icon::before,
+.flow-container.paused .flow-connection::before {
+    animation-play-state: paused;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .flow-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .flow-connection {
+        display: none;
+    }
+    
+    .flow-node::after {
+        content: '↓';
+        position: absolute;
+        bottom: -2rem;
+        font-size: 2rem;
+        color: var(--accent-purple);
+        animation: bounce 1s ease-in-out infinite;
+    }
+    
+    .flow-node:last-child::after {
+        display: none;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+    }
+}

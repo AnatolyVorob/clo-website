@@ -1,0 +1,95 @@
+/* Enhanced scroll-linked animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered reveal for cards */
+.about-card:nth-child(1) { transition-delay: 0.1s; }
+.about-card:nth-child(2) { transition-delay: 0.2s; }
+.about-card:nth-child(3) { transition-delay: 0.3s; }
+.about-card:nth-child(4) { transition-delay: 0.4s; }
+
+.capability:nth-child(1) { transition-delay: 0.1s; }
+.capability:nth-child(2) { transition-delay: 0.15s; }
+.capability:nth-child(3) { transition-delay: 0.2s; }
+.capability:nth-child(4) { transition-delay: 0.25s; }
+.capability:nth-child(5) { transition-delay: 0.3s; }
+.capability:nth-child(6) { transition-delay: 0.35s; }
+
+/* Enhanced glow on hover */
+.about-card:hover,
+.capability:hover,
+.tech-item:hover {
+    filter: brightness(1.1);
+}
+
+/* Animated underline for links */
+a {
+    position: relative;
+    text-decoration: none;
+    color: var(--accent-purple);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* Noise texture overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+    pointer-events: none;
+    z-index: 10001;
+    opacity: 0.3;
+}
+
+/* Enhanced section transitions */
+section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Gradient text for emphasis */
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Pulsing glow effect */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+    }
+}
+
+.glow-pulse {
+    animation: pulseGlow 3s ease-in-out infinite;
+}

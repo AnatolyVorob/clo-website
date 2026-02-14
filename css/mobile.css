@@ -1,0 +1,95 @@
+/* Mobile optimizations - reduce heavy effects */
+@media (max-width: 768px) {
+    /* Drastically simplify gradient mesh for mobile performance */
+    body {
+        background: 
+            radial-gradient(circle 500px at 50% 0%, rgba(168, 85, 247, 0.4) 0%, transparent 70%),
+            radial-gradient(circle 500px at 0% 100%, rgba(99, 102, 241, 0.3) 0%, transparent 70%),
+            #020208;
+        background-attachment: scroll; /* Fixed attachment is expensive on mobile */
+    }
+    
+    /* Remove backdrop-filter completely on mobile - it's the main performance killer */
+    .about-card,
+    .capability {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(26, 26, 46, 0.8) !important;
+    }
+    
+    /* Disable all floating elements on mobile */
+    .floating-elements {
+        display: none !important;
+    }
+    
+    /* Disable particles on mobile */
+    #particles-canvas {
+        display: none !important;
+    }
+    
+    /* Simplify hero animations */
+    .hero::before,
+    .hero::after {
+        display: none !important;
+    }
+    
+    .blob {
+        display: none !important;
+    }
+    
+    /* Simplify all animations */
+    .about-card,
+    .capability {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    /* Reduce transform complexity on hover */
+    .about-card:hover,
+    .capability:hover {
+        transform: translateY(-4px);
+    }
+    
+    /* Disable SVG animations on mobile */
+    svg animate,
+    svg animateTransform {
+        animation-play-state: paused !important;
+    }
+    
+    /* Optimize typography */
+    h1 {
+        font-size: 3rem !important;
+    }
+    
+    h2 {
+        font-size: 3rem !important;
+    }
+    
+    /* Better spacing for mobile */
+    .about,
+    .capabilities,
+    .philosophy,
+    .tech {
+        padding: 5rem 0 !important;
+    }
+    
+    /* Force GPU acceleration for smoother scrolling */
+    .hero,
+    .about-card,
+    .capability {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .floating-elements {
+        display: none !important;
+    }
+}
