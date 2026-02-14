@@ -1,8 +1,12 @@
 /* ============================================
-   ANIMATIONS - Keyframes & Transitions
+   ANIMATIONS.CSS - Consolidated Animations
+   All @keyframes, animations, and transitions
    ============================================ */
 
-/* Fade & Slide */
+/* ============================================
+   CORE KEYFRAMES
+   ============================================ */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -15,64 +19,29 @@
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
     to {
         opacity: 1;
     }
 }
 
-/* Text Reveal */
-@keyframes textReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-        filter: blur(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-/* Logo Animations */
-@keyframes logoFloat {
+@keyframes pulse {
     0%, 100% {
-        transform: translateY(0) rotate(0deg) scale(1);
-    }
-    25% {
-        transform: translateY(-10px) rotate(-5deg) scale(1.05);
+        transform: scale(1);
     }
     50% {
-        transform: translateY(0) rotate(0deg) scale(1);
-    }
-    75% {
-        transform: translateY(-10px) rotate(5deg) scale(1.05);
+        transform: scale(1.05);
     }
 }
 
-@keyframes logoGlitch {
-    0%, 90%, 100% {
-        transform: translate(0, 0);
-        opacity: 0;
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
     }
-    92% {
-        transform: translate(-3px, 3px);
-        opacity: 0.7;
-    }
-    94% {
-        transform: translate(3px, -3px);
-        opacity: 0.5;
-    }
-    96% {
-        transform: translate(-2px, -2px);
-        opacity: 0.3;
+    50% {
+        transform: translateX(-50%) translateY(-10px);
     }
 }
 
-/* Glitch Effect */
 @keyframes glitch {
     0%, 100% {
         transform: translate(0);
@@ -115,106 +84,66 @@
     }
 }
 
-/* Blob Morphing */
-@keyframes blobMove {
+/* ============================================
+   GLOW & PULSE EFFECTS
+   ============================================ */
+
+@keyframes pulseGlow {
     0%, 100% {
-        transform: translate(0, 0) scale(1);
-        border-radius: 50%;
-    }
-    25% {
-        transform: translate(50px, -50px) scale(1.2);
-        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
     }
     50% {
-        transform: translate(-30px, 30px) scale(0.9);
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
-    75% {
-        transform: translate(30px, 50px) scale(1.1);
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
     }
 }
 
-/* Floating Glow */
-@keyframes floatingGlow {
+@keyframes pulse-glow {
     0%, 100% {
-        transform: translate(0, 0) scale(1);
+        box-shadow: 0 0 20px var(--accent-purple);
+        transform: translate(-50%, -50%) scale(1);
     }
-    33% {
-        transform: translate(30px, -30px) scale(1.1);
-    }
-    66% {
-        transform: translate(-30px, 30px) scale(0.9);
+    50% {
+        box-shadow: 0 0 40px var(--accent-purple);
+        transform: translate(-50%, -50%) scale(1.2);
     }
 }
 
-/* Grid Movement */
-@keyframes gridMove {
+@keyframes pulse-line {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ============================================
+   RIPPLE & WAVE EFFECTS
+   ============================================ */
+
+@keyframes ripple {
     0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(50px, 50px);
-    }
-}
-
-/* Pulse */
-@keyframes pulse {
-    0%, 100% {
+        opacity: 0.6;
         transform: scale(1);
     }
-    50% {
-        transform: scale(1.05);
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
     }
 }
 
-/* Bounce */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-}
-
-/* Rotate */
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Shimmer */
-@keyframes shimmer {
+@keyframes ripple-dot {
     0% {
-        background-position: -1000px 0;
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
     }
     100% {
-        background-position: 1000px 0;
+        box-shadow: 0 0 0 20px rgba(168, 85, 247, 0);
     }
 }
 
-/* Gradient Animation */
-@keyframes gradientShift {
+@keyframes flow {
     0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Particle Float */
-@keyframes particleFloat {
-    0%, 100% {
-        transform: translateY(0) translateX(0);
+        left: 0%;
         opacity: 0;
     }
     10% {
@@ -224,38 +153,430 @@
         opacity: 1;
     }
     100% {
-        transform: translateY(-100vh) translateX(50px);
+        left: 100%;
         opacity: 0;
     }
 }
 
-/* Staggered Reveal */
-.stagger-reveal > *:nth-child(1) { 
-    animation-delay: 0.1s; 
-}
-.stagger-reveal > *:nth-child(2) { 
-    animation-delay: 0.2s; 
-}
-.stagger-reveal > *:nth-child(3) { 
-    animation-delay: 0.3s; 
-}
-.stagger-reveal > *:nth-child(4) { 
-    animation-delay: 0.4s; 
-}
-.stagger-reveal > *:nth-child(5) { 
-    animation-delay: 0.5s; 
-}
-.stagger-reveal > *:nth-child(6) { 
-    animation-delay: 0.6s; 
+/* ============================================
+   FLOATING & MOVEMENT EFFECTS
+   ============================================ */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
-/* Reduced Motion */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   STAGGERED REVEAL - CARDS
+   ============================================ */
+
+.about-card:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.about-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.about-card:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.about-card:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+/* ============================================
+   STAGGERED REVEAL - CAPABILITIES
+   ============================================ */
+
+.capability:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.capability:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.capability:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.capability:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+.capability:nth-child(5) {
+    transition-delay: 0.3s;
+}
+
+.capability:nth-child(6) {
+    transition-delay: 0.35s;
+}
+
+/* ============================================
+   HOVER TRANSITIONS
+   ============================================ */
+
+.about-card,
+.capability,
+.tech-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.about-card:hover,
+.capability:hover,
+.tech-item:hover {
+    filter: brightness(1.1);
+}
+
+/* ============================================
+   LINK ANIMATIONS
+   ============================================ */
+
+a {
+    position: relative;
+    text-decoration: none;
+    color: var(--accent-purple);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   GLOW PULSE EFFECT
+   ============================================ */
+
+.glow-pulse {
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* ============================================
+   TIMELINE ANIMATIONS
+   ============================================ */
+
+.timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.timeline-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.timeline-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.timeline-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.timeline-dot {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
+}
+
+.timeline-dot:hover {
+    transform: translateX(-50%) scale(1.3);
+    box-shadow: 0 0 0 10px rgba(168, 85, 247, 0);
+    animation: ripple-dot 1s ease-out;
+}
+
+.timeline-content {
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.timeline-item.expanded .timeline-details {
+    max-height: 500px;
+}
+
+/* ============================================
+   ARCHITECTURE FLOW ANIMATIONS
+   ============================================ */
+
+.flow-icon {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.flow-icon::before {
+    animation: ripple 2s ease-out infinite;
+}
+
+.flow-node:nth-child(1) .flow-icon {
+    animation-delay: 0s;
+}
+
+.flow-node:nth-child(2) .flow-icon {
+    animation-delay: 0.8s;
+}
+
+.flow-node:nth-child(3) .flow-icon {
+    animation-delay: 1.6s;
+}
+
+.flow-node:nth-child(4) .flow-icon {
+    animation-delay: 2.4s;
+}
+
+.flow-node:nth-child(5) .flow-icon {
+    animation-delay: 3.2s;
+}
+
+.flow-connection::before {
+    animation: flow 4s linear infinite;
+}
+
+.flow-control-btn {
+    transition: all 0.3s ease;
+}
+
+.flow-control-btn:hover {
+    transform: translateY(-2px);
+}
+
+.flow-container.paused .flow-icon,
+.flow-container.paused .flow-icon::before,
+.flow-container.paused .flow-connection::before {
+    animation-play-state: paused;
+}
+
+/* ============================================
+   MEMORY GRAPH ANIMATIONS
+   ============================================ */
+
+.memory-node {
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.memory-node:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.memory-node:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.memory-node:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.memory-node:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.memory-node:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+.memory-node:nth-child(6) {
+    animation-delay: 1s;
+}
+
+.memory-node:nth-child(7) {
+    animation-delay: 1.2s;
+}
+
+.memory-node:nth-child(8) {
+    animation-delay: 1.4s;
+}
+
+.memory-node:nth-child(9) {
+    animation-delay: 1.6s;
+}
+
+.memory-node:nth-child(10) {
+    animation-delay: 1.8s;
+}
+
+.memory-node:hover {
+    transform: scale(1.3);
+    z-index: 20;
+}
+
+.connection-line {
+    animation: pulse-line 3s ease-in-out infinite;
+}
+
+.node-tooltip {
+    transition: opacity 0.3s ease;
+}
+
+.memory-node:hover .node-tooltip {
+    opacity: 1;
+}
+
+/* ============================================
+   PLAYGROUND TERMINAL ANIMATIONS
+   ============================================ */
+
+.terminal-line {
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.terminal-cursor {
+    animation: blink 1s step-end infinite;
+}
+
+.command-btn {
+    transition: all 0.3s ease;
+}
+
+.command-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+}
+
+.command-btn:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   NAVIGATION ANIMATIONS
+   ============================================ */
+
+.nav {
+    transition: all 0.3s ease;
+}
+
+.nav-logo {
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--accent-purple);
+}
+
+.nav-links a {
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   MOBILE HAMBURGER MENU ANIMATIONS
+   ============================================ */
+
+.nav-toggle span {
+    transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-links {
+    transition: transform 0.3s ease;
+}
+
+.nav-links.active {
+    transform: translateX(0);
+}
+
+/* ============================================
+   MOBILE BOUNCE ANIMATION
+   ============================================ */
+
+@media (max-width: 768px) {
+    .flow-node::after {
+        animation: bounce 1s ease-in-out infinite;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCES
+   ============================================ */
+
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .floating-elements {
+        display: none !important;
     }
 }
