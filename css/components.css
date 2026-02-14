@@ -1,0 +1,170 @@
+/* ============================================
+   COMPONENTS - Cards, Badges, Buttons
+   ============================================ */
+
+/* Cards */
+.card {
+    background: rgba(26, 26, 46, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-purple);
+    box-shadow: var(--shadow-md);
+}
+
+.card:hover::before {
+    opacity: 0.1;
+}
+
+/* Card with 3D effect */
+.card-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card-3d:hover {
+    transform: translateY(-15px) scale(1.05) rotateX(5deg) rotateY(5deg);
+    box-shadow: var(--shadow-lg), 0 0 50px rgba(168, 85, 247, 0.4), inset 0 0 30px rgba(168, 85, 247, 0.15);
+}
+
+/* Card Icon */
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: var(--z-base);
+}
+
+.card-icon-large {
+    font-size: 5rem;
+}
+
+/* Card Content */
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: var(--z-base);
+}
+
+.card-text {
+    color: var(--text-secondary);
+    position: relative;
+    z-index: var(--z-base);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-lg);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-gradient {
+    background: var(--gradient);
+    color: white;
+}
+
+.badge-success {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid var(--accent-emerald);
+    color: var(--accent-emerald);
+}
+
+.badge-warning {
+    background: rgba(245, 158, 11, 0.2);
+    border: 1px solid var(--accent-amber);
+    color: var(--accent-amber);
+}
+
+.badge-info {
+    background: rgba(6, 182, 212, 0.2);
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+/* Tech Tags */
+.tech-tag {
+    padding: 0.4rem 0.8rem;
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+}
+
+.tech-tag:hover {
+    background: rgba(168, 85, 247, 0.3);
+    border-color: var(--accent-purple);
+}
+
+/* Stats */
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-purple);
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Flow Nodes */
+.flow-node {
+    padding: 1.5rem 2rem;
+    background: rgba(168, 85, 247, 0.2);
+    border: 2px solid var(--accent-purple);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all var(--transition-base);
+}
+
+.flow-node:hover {
+    background: rgba(168, 85, 247, 0.3);
+    transform: scale(1.05);
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: var(--accent-purple);
+}
+
+.flow-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}

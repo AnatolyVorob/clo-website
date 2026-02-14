@@ -1,0 +1,261 @@
+/* ============================================
+   ANIMATIONS - Keyframes & Transitions
+   ============================================ */
+
+/* Fade & Slide */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Text Reveal */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Logo Animations */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-10px) rotate(-5deg) scale(1.05);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    75% {
+        transform: translateY(-10px) rotate(5deg) scale(1.05);
+    }
+}
+
+@keyframes logoGlitch {
+    0%, 90%, 100% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    92% {
+        transform: translate(-3px, 3px);
+        opacity: 0.7;
+    }
+    94% {
+        transform: translate(3px, -3px);
+        opacity: 0.5;
+    }
+    96% {
+        transform: translate(-2px, -2px);
+        opacity: 0.3;
+    }
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+    0%, 100% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+}
+
+@keyframes glitchTop {
+    0%, 100% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, -3px);
+    }
+    40% {
+        transform: translate(3px, 3px);
+    }
+}
+
+@keyframes glitchBottom {
+    0%, 100% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+}
+
+/* Blob Morphing */
+@keyframes blobMove {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        border-radius: 50%;
+    }
+    25% {
+        transform: translate(50px, -50px) scale(1.2);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    50% {
+        transform: translate(-30px, 30px) scale(0.9);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    75% {
+        transform: translate(30px, 50px) scale(1.1);
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+}
+
+/* Floating Glow */
+@keyframes floatingGlow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+}
+
+/* Grid Movement */
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+/* Pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Bounce */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* Rotate */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Particle Float */
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Staggered Reveal */
+.stagger-reveal > *:nth-child(1) { 
+    animation-delay: 0.1s; 
+}
+.stagger-reveal > *:nth-child(2) { 
+    animation-delay: 0.2s; 
+}
+.stagger-reveal > *:nth-child(3) { 
+    animation-delay: 0.3s; 
+}
+.stagger-reveal > *:nth-child(4) { 
+    animation-delay: 0.4s; 
+}
+.stagger-reveal > *:nth-child(5) { 
+    animation-delay: 0.5s; 
+}
+.stagger-reveal > *:nth-child(6) { 
+    animation-delay: 0.6s; 
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
